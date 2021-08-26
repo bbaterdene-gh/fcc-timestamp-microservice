@@ -1,6 +1,12 @@
 
 const express = require('express')
+const compression = require('compression')
+const helmet = require('helmet')
 const app = express()
+
+app.use(helmet())
+app.use(compression())
+
 const port = 3000
 
 app.get('/api/:date?', (req, res) => {
@@ -12,6 +18,7 @@ app.get('/api/:date?', (req, res) => {
       unix: date.getTime(),
       utc: date.toUTCString(),
     })
+    return
   }
 
   date = date.split('-')
