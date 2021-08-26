@@ -27,7 +27,8 @@ app.get('/api/:date?', (req, res) => {
 
   // epoch
   if ( date.length === 1) {
-    date = new Date(+date[0])
+    date = isNaN(date[0]) ? date[0] : +date[0]
+    date = new Date(date)
   } else if ( date.length <= 3 ){
   // year, month, day
     const year = +date[0] || 0
