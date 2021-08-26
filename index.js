@@ -7,7 +7,7 @@ const app = express()
 app.use(helmet())
 app.use(compression())
 
-const port = 3000
+const port = process.env.PORT || 3000
 
 app.get('/api/:date?', (req, res) => {
   let { date } = req.params
